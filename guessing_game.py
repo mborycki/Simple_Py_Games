@@ -1,5 +1,8 @@
 import random
 import time
+import os
+
+clear = lambda: os.system('clear') # 'cls in Linux
 
 def pc_guess(min_no, max_no, name):
     '''
@@ -12,8 +15,9 @@ def pc_guess(min_no, max_no, name):
     max_no - maximum number
     name - your name
     '''
-    print(f'Hi {name} I will try to guess waht is your number. Please choose within 5 seconds a number.\n')
+    print(f'Hi {name} I will try to guess waht is your number.\nPlease choose within 5 seconds a number.\n')
     time.sleep(5)
+    clear()
     answer = ''
     while answer != 'W':
         guess_number = random.randint(min_no,max_no)
@@ -37,21 +41,18 @@ def user_guess(x):
     #x = int(input('Guessing Game\n.What is the maximum number?: '))
     guess_number = random.randint(1,x)
     print("The guessing number has been draw.\n ")
+    time.sleep(2)
+    clear() 
     my_number = 0
     while guess_number != my_number:
         my_number = int(input('\nPlease type what is your number: '))
         if my_number < guess_number:
             print("Nooo, the Guessing Number is higher...")
+            time.sleep(2)
+            clear() 
         elif my_number > guess_number:
             print(f'Nooo, the Guessing Number is lower...')
+            time.sleep(2)
+            clear()
     print("Great!!! You won :)")
 
-print('Hello. Please choose a game:\n'
-'Guessing Game for User: (A)\n'
-'Guessing Game for Computer: (B)')
-chosen_game = input('Please type A or B: ').upper()
-if chosen_game == 'A':
-    user_guess(10)
-elif chosen_game == 'B':
-    name = input('Good choice. What is your name ')
-    pc_guess(1,10,name)
