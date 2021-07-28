@@ -2,9 +2,11 @@ import guessing_game as g
 import RockScissorsPaper as r
 import hangman as h
 import tic_tac_toe as t
+import os
 
+clear = lambda: os.system('clear') 
 
-print('Hello. Please choose a game:\n'
+print('\nHello. Please choose a game:\n'
 'Guessing Game for User: (A)\n'
 'Guessing Game for Computer: (B)\n'
 'Rock Scissors Paper: (C)\n'
@@ -14,9 +16,12 @@ print('Hello. Please choose a game:\n'
 chosen_game = input('\nPlease type A \ B \ C \ D \ E: ').upper()
 
 if chosen_game == 'A':
+    clear()
+    print('Your goal is to guess a number between 1 and 10')
     g.user_guess(10)
 elif chosen_game == 'B':
-    name = input('Good choice. What is your name ')
+    clear()
+    name = input('Hello. What is your name?\n>> ')
     g.pc_guess(1,10,name)
 elif chosen_game == 'C':
     r.rock_scissors_paper()

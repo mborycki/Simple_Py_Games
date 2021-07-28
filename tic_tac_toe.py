@@ -66,7 +66,7 @@ def choose_player(p1, p2):
         sleep(3)
         clear_console()
 
-        answer = input(f'{p1} do you want to begin the game? (y/n): ')
+        answer = input(f'{p1} do you want to begin the game? (y/n). Type "n" if {p2} should be the first player: ')
         answer =  answer.upper()
         if answer in answers:
             if answer == "Y":

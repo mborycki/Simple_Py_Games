@@ -1,5 +1,5 @@
 import random
-import time
+from time import sleep
 import os
 
 clear = lambda: os.system('clear') # 'cls in Linux
@@ -15,44 +15,56 @@ def pc_guess(min_no, max_no, name):
     max_no - maximum number
     name - your name
     '''
-    print(f'Hi {name} I will try to guess waht is your number.\nPlease choose within 5 seconds a number.\n')
-    time.sleep(5)
     clear()
+    print(f'Hi {name}. I will try to guess what is your number.')
+    sleep(3)
+    clear()
+    print('Please choose your number within 5 seconds\n')
+    sleep(5)
+    
     answer = ''
+    guess_counter = 0
     while answer != 'W':
+        clear()
         guess_number = random.randint(min_no,max_no)
         if (guess_number - min_no) - (guess_number - max_no) == 0:
-            #print('Hooray!!! I won :)')
             answer = 'W'
         else:
             print(f'\nIs the number is {guess_number}:\n')
-            answer = input(f"{name}'s number: ").upper()
+            answer = input(f"{name}'s answer (H - higher, S - smaller, W - this is my number): ").upper()
+            guess_counter += 1
             if answer == 'S':
                 max_no = guess_number - 1
             elif answer == 'H':
                 min_no = guess_number + 1
             elif answer == 'W':
-                print(f'Hooray!!! I won :). Your number is {guess_number}')
+                clear()
+                print(f'Hooray!!! I won :). Your number is {guess_number}. Anyway, I messed {guess_counter} times.')
+                sleep(5)
             else:
                 print("I don't understand. Please type only: 'H', 'S', 'W'")
-    print(f'Hooray!!! I won :). Your number is {guess_number}')
+    clear()
+    print(f'Thank you for your time.')
 
 def user_guess(x):
     #x = int(input('Guessing Game\n.What is the maximum number?: '))
     guess_number = random.randint(1,x)
     print("The guessing number has been draw.\n ")
-    time.sleep(2)
+    time.sleep(3)
     clear() 
-    my_number = 0
-    while guess_number != my_number:
-        my_number = int(input('\nPlease type what is your number: '))
-        if my_number < guess_number:
+    zero = 0
+    guess_counter = 0
+    while guess_number != zero:
+        zero = int(input('\nPlease guess the number: '))
+        if zero < guess_number:
             print("Nooo, the Guessing Number is higher...")
             time.sleep(2)
+            guess_counter += 1
             clear() 
-        elif my_number > guess_number:
+        elif zero > guess_number:
             print(f'Nooo, the Guessing Number is lower...')
             time.sleep(2)
+            guess_counter += 1
             clear()
-    print("Great!!! You won :)")
+    print(f"Great!!! You won :). You missed {guess_counter} times")
 

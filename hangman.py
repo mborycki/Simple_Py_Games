@@ -25,27 +25,35 @@ def hangman_game(lives_number):
     chosen_word = choose_a_word(hangman_words)
     word_letters = set(chosen_word)
     used_letters = set()
-    # print(f"Word: {chosen_word}\n") # you might see the chosen word in here
+    missed_letters = list()
     sleep(5)
 
     while len(word_letters) > 0 and lives >= 1:
         clear()
         guessed_letters = [letter if letter in used_letters else "_" for letter in chosen_word]
         print(f"Remaining life: {lives}")
+        print(f"Used letters: {missed_letters}")
         print("\nCurrent word: "," ".join(guessed_letters))
         user_letter = input("\nWrite a letter: ").upper()
         
         if user_letter in word_letters and user_letter in alphabet:
+            clear()
             print(f"{underline}You guessed the letter: '{user_letter}'{underline}")
+            sleep(3)
             word_letters.remove(user_letter)
             used_letters.add(user_letter)
         else:
+            clear()
             print(f"{underline}Sorry try to guess another letter{underline}")
+            sleep(3)
+            missed_letters.append(user_letter)
             lives -= 1
     
     if lives == 0:
         clear()
         print(f"\n{underline}Sorry but you're dead. The chosen word was: '{chosen_word}'{underline}")
+        sleep(3)
     else:
         clear()
         print(f"\n{underline}Congratulation! You guessed the chosen word was: '{chosen_word}'{underline}")
+        sleep(3)

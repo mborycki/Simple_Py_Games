@@ -5,7 +5,7 @@ import time
 clear = lambda: os.system('clear')
 def rock_scissors_paper():
     rsp_list = ['r','s','p']
-
+    clear()
     print("Welcome in the Rock Scissors Paper game.\n")
 
     while True:
