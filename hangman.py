@@ -1,6 +1,10 @@
 from words import hangman_words
 import random
 import string
+import os
+from time import sleep
+
+clear = lambda: os.system('clear')
 
 def choose_a_word(hangman_words):
     word = random.choice(hangman_words)
@@ -13,14 +17,19 @@ def hangman_game(lives_number):
     Argument: lives = amount of lives you wanna have
     '''
     underline = ("\n-----------------------\n")
+    clear()
+    print("Welcome in the Hangman Game!" + underline)
+    print('We are searching a word for you. Please wait a second...')
     lives = lives_number
     alphabet = set(string.ascii_uppercase)
     chosen_word = choose_a_word(hangman_words)
     word_letters = set(chosen_word)
     used_letters = set()
-    print(f"Word: {chosen_word}\n")
-    
+    # print(f"Word: {chosen_word}\n") # you might see the chosen word in here
+    sleep(5)
+
     while len(word_letters) > 0 and lives >= 1:
+        clear()
         guessed_letters = [letter if letter in used_letters else "_" for letter in chosen_word]
         print(f"Remaining life: {lives}")
         print("\nCurrent word: "," ".join(guessed_letters))
@@ -35,6 +44,8 @@ def hangman_game(lives_number):
             lives -= 1
     
     if lives == 0:
+        clear()
         print(f"\n{underline}Sorry but you're dead. The chosen word was: '{chosen_word}'{underline}")
     else:
+        clear()
         print(f"\n{underline}Congratulation! You guessed the chosen word was: '{chosen_word}'{underline}")
