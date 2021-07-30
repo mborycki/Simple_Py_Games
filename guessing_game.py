@@ -31,39 +31,39 @@ def pc_guess(min_no, max_no, name):
             answer = 'W'
         else:
             print(f'\nIs the number is {guess_number}:\n')
-            answer = input(f"{name}'s answer (H - higher, S - smaller, W - this is my number): ").upper()
+            answer = input(f"{name}'s answer (H - bigger, S - smaller, W - this is my number): ").upper()
             guess_counter += 1
             if answer == 'S':
                 max_no = guess_number - 1
             elif answer == 'H':
                 min_no = guess_number + 1
-            elif answer == 'W':
-                clear()
-                print(f'Hooray!!! I won :). Your number is {guess_number}. Anyway, I messed {guess_counter} times.')
-                sleep(5)
             else:
                 print("I don't understand. Please type only: 'H', 'S', 'W'")
     clear()
+    print(f'Hooray!!! I won :). Your number is {guess_number}. Anyway, I missed {guess_counter - 1} times.')
+    sleep(5)
+    clear()
     print(f'Thank you for your time.')
+    
 
 def user_guess(x):
     #x = int(input('Guessing Game\n.What is the maximum number?: '))
     guess_number = random.randint(1,x)
-    print("The guessing number has been draw.\n ")
-    time.sleep(3)
+    print('The "guessing number" has been drawn.\n ')
+    sleep(3)
     clear() 
     zero = 0
     guess_counter = 0
     while guess_number != zero:
         zero = int(input('\nPlease guess the number: '))
         if zero < guess_number:
-            print("Nooo, the Guessing Number is higher...")
-            time.sleep(2)
+            print('Nooo, the "guessing number" is higher...')
+            sleep(2)
             guess_counter += 1
             clear() 
         elif zero > guess_number:
-            print(f'Nooo, the Guessing Number is lower...')
-            time.sleep(2)
+            print(f'Nooo, the "guessing number" is lower...')
+            sleep(2)
             guess_counter += 1
             clear()
     print(f"Great!!! You won :). You missed {guess_counter} times")

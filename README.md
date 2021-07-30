@@ -1,7 +1,12 @@
-In here I will keep a few simple games, such as:
+# Simple Games
 
-- Guessing Games with two options:
+In here I keep a few simple games, such as:
 
-a) You can choose a number and Computer will find the number
+- **Game #1:** "Guessing Game - User mode"
+- **Game #2:** "Guessing Game - Computer mode"
+- **Game #3:** "Rock Scissors Paper"
+- **Game #4:** "Hangman"
+- **Game #5:** "Tic Tac Toe"
 
-b) Computer will have a number and you will need to find it
+---
+Please find more detailed description of this project in my **[portfolio](https://mariuszborycki.com/2021/7/30/simple-games-in-python/)**
